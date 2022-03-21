@@ -1,38 +1,119 @@
+#include <ctype.h>
 #include <math.h>
+#include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+bool finding_bracket(char* UKAZAT)
+{
+    int flag = 0;
+    while (*UKAZAT != 10) {
+        if (*UKAZAT == '(') {
+            flag = 1;
+            break;
+        }
+        UKAZAT++;
+    }
+    if (flag == 0) {
+        printf("Error at column 7: expected '('");
+        return false;
+    }
+    return true;
+}
+
+bool finding_bracket2(char* UKAZAT)
+{
+    int flag = 0;
+    while (*UKAZAT != 10) {
+        if (*UKAZAT == ')') {
+            flag = 1;
+            break;
+        }
+        UKAZAT++;
+    }
+    if (flag == 0) {
+        printf("Error at column 14: expected ')'");
+        return false;
+    }
+    return true;
+}
+
+bool finding_comma(char* UKAZAT)
+{
+    int flag = 0;
+    while (*UKAZAT != 10) {
+        if (*UKAZAT == ',') {
+            flag = 1;
+            break;
+        }
+        UKAZAT++;
+    }
+    if (flag == 0) {
+        printf("Error expected ','");
+        return false;
+    }
+    return true;
+}
+
+bool correct(char* Circle, char* UKAZAT, int N)
+{
+    int g = 6, check = 0;
+    if (strncmp(Circle, UKAZAT, g) == 0) {
+        check++;
+        if (finding_bracket(UKAZAT) == true)
+            check++;
+        if (finding_comma(UKAZAT) == true)
+            check++;
+        if (finding_bracket2(UKAZAT) == true)
+            check++;
+    } else {
+        printf("error: Check the spelling of the command");
+    }
+    if (check == 4)
+        return true;
+    if (check != 4)
+        return false;
+    return true;
+}
+
+void translation_universal(char* UKAZAT, double* x1)
+{
+    char* point;
+    double c;
+    int i = 0;
+    while (isdigit(*UKAZAT) == 0) {
+        UKAZAT++;
+        if (isdigit(*UKAZAT) != 0) {
+            c = strtod(UKAZAT, &point);
+            x1[i] = c;
+            i++;
+            UKAZAT = point;
+            if (i == 3)
+                break;
+        } else {
+            break;
+        }
+    }
+}
 
 int main()
 {
-    int F;
-    float x, y, r, a, b, c;
-    printf("Choose Your figure: \n 1: Circle \n 2: Triangle \n Input "
-           "number\n ");
-    scanf("%d", &F);
-    switch (F) {
-    case 1:
-        printf("Enter x, y, radius, the shape data according to the sample \n "
-               "(circle(0 0, 1.5))\n");
-        scanf("%f %f, %f", &x, &y, &r);
-        if (r > 0) {
-            printf("circle(%f %f, %f)", x, y, r);
-        } else {
-            printf("Incorrect input\n");
-            break;
-        case 2:
-            printf("Enter a, b, c, your triangle the shape data according to "
-                   "the sample \n triangle(3, 4, 5)\n");
-            scanf("%f, %f, %f", &a, &b, &c);
-            if ((a > 0) && (b > 0) && (c > 0)) {
-                if ((a <= b + c) && (b <= c + a) && (c <= a + b)) {
-                    printf("triangle(%f %f %f)", a, b, c);
-                }
-            } else {
-                printf("Incorrect input\n");
-            }
-            break;
-        default:
-            printf("Error\n");
-        }
-        return 0;
+    int N = 50;
+    double A[4];
+    char str[N];
+    char* UKAZAT = str;
+    char* UKAZAT2 = str;
+    char Circle[] = {"circle"};
+    fgets(str, N, stdin);
+    if (isalpha(*UKAZAT) != 0) {
+        while (isalpha(*UKAZAT2) != 0)
+            UKAZAT2++;
     }
+    if (correct(Circle, str, N) == true) {
+        UKAZAT = UKAZAT2;
+        printf("correct\n");
+    }
+    translation_universal(UKAZAT, A);
+    return 0;
 }
