@@ -55,3 +55,24 @@ bool finding_comma(char* UKAZAT)
     }
     return true;
 }
+
+bool correct(char* Circle, char* UKAZAT, int N)
+{
+    int g = 6, check = 0;
+    if (strncmp(Circle, UKAZAT, g) == 0) {
+        check++;
+        if (finding_bracket(UKAZAT) == true)
+            check++;
+        if (finding_comma(UKAZAT) == true)
+            check++;
+        if (finding_bracket2(UKAZAT) == true)
+            check++;
+    } else {
+        printf("error: Check the spelling of the command");
+    }
+    if (check == 4)
+        return true;
+    if (check != 4)
+        return false;
+    return true;
+}
