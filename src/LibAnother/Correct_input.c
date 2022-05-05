@@ -38,3 +38,20 @@ bool finding_bracket2(char* UKAZAT)
     }
     return true;
 }
+
+bool finding_comma(char* UKAZAT)
+{
+    int flag = 0;
+    while (*UKAZAT != 10) {
+        if (*UKAZAT == ',') {
+            flag = 1;
+            break;
+        }
+        UKAZAT++;
+    }
+    if (flag == 0) {
+        printf("Error expected ','");
+        return false;
+    }
+    return true;
+}
