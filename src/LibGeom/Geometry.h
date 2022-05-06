@@ -1,3 +1,3 @@
 #pragma once
-float CircleS(double* A);
-float CircleP(double* A);
+void CircleS(double* A);
+void CircleP(double* A);
