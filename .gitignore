@@ -1,1 +1,4 @@
-geometry
+bin/main
+obj/src/Geometry/*.[od]
+obj/src/Libgeom/*.[oda]
+obj/src/LibAnother/*.[oda]
