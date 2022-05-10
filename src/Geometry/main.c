@@ -16,7 +16,7 @@ int main()
         while (isalpha(*UKAZAT2) != 0)
             UKAZAT2++;
     }
-    if (correct(Circle, str, N) == true) {
+    if (correct(Circle, str) == true) {
         UKAZAT = UKAZAT2;
         printf("correct\n");
     }
