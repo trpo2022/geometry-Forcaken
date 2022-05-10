@@ -56,7 +56,7 @@ bool finding_comma(char* UKAZAT)
     return true;
 }
 
-bool correct(char* Circle, char* UKAZAT, int N)
+bool correct(char* Circle, char* UKAZAT)
 {
     int g = 6, check = 0;
     if (strncmp(Circle, UKAZAT, g) == 0) {
