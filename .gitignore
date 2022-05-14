@@ -1,4 +1,3 @@
-bin/main
-obj/src/Geometry/*.[od]
-obj/src/Libgeom/*.[oda]
-obj/src/LibAnother/*.[oda]
+*obj/src/Geometry/*.o
+*obj/src/LibAnother/*.o
+*obj/src/Libgeom/*.o
